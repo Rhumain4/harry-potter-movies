@@ -1,0 +1,34 @@
+<h3>Details</h3>
+
+<table *ngIf="movie" class="movie-details-table">
+  <tr>
+    <th>Box Office</th>
+    <td>${{ movie.box_office }} million</td>
+  </tr>
+  <tr>
+    <th>Budget</th>
+    <td>${{ movie.budget }} million</td>
+  </tr>
+  <tr>
+    <th>Duration</th>
+    <td>{{ movie.duration.toString() | durationFormat }}</td>
+  </tr>
+  <tr>
+    <th>Producers</th>
+    <td>
+      <ul>
+        <li *ngFor="let producer of movie.producers">{{ producer }}</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Cinematographers</th>
+    <td>
+      <ul>
+        <li *ngFor="let cinematographer of movie.cinematographers">
+          {{ cinematographer }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,12 @@
+<h1>Filters :</h1>
+<form [formGroup]="formMoviesFilters">
+  <div>
+    <label for="title">Title:</label>
+    <input type="text" id="title" formControlName="title" />
+  </div>
+
+  <div>
+    <label for="releaseYear">Release Year:</label>
+    <input type="number" id="releaseYear" formControlName="releaseYear" />
+  </div>
+</form>

@@ -1,0 +1,29 @@
+.movie-details {
+  text-align: center;
+  width: 100%;
+  width: 50rem;
+  background-color: rgb(242, 243, 243);
+  padding: 3rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.movie-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.movie-poster img {
+  width: 250px; /* Ajuste la largeur selon tes besoins */
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-summary {
+  width: 60%; /* Ajuste la largeur selon tes besoins */
+  padding-left: 20px;
+  text-align: justify;
+}

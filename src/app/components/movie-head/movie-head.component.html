@@ -1,0 +1,13 @@
+<div class="movie-details">
+  <h1>{{ movie?.title }}</h1>
+  <div class="movie-content">
+    <div class="movie-poster">
+      <img [src]="movie?.poster" alt="{{ movie?.title }}" />
+    </div>
+
+    <div class="movie-summary">
+      <h3>Summary</h3>
+      <p>{{ movie?.summary }}</p>
+    </div>
+  </div>
+</div>

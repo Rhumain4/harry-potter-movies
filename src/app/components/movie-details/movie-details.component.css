@@ -1,0 +1,26 @@
+.movie-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.movie-details-table th,
+.movie-details-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.movie-details-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.movie-details-table td ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-details-table td li {
+  margin-bottom: 5px;
+}
