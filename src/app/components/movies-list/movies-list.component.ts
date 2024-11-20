@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from '../../models/movie';
+import { BudgetPipe } from '../../pipes/budget.pipe';
 import { DurationFormatPipe } from '../../pipes/duration-format.pipe';
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [CommonModule, DurationFormatPipe],
+  imports: [CommonModule, DurationFormatPipe, BudgetPipe],
   templateUrl: './movies-list.component.html',
   styleUrl: './movies-list.component.css',
 })

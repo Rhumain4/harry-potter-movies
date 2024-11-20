@@ -4,10 +4,10 @@
       <h3 class="movie-title">{{ movie.title }}</h3>
       <div class="movie-details">
         <p class="movie-release-date">
-          <strong>Release Date :</strong> {{ movie.release_date }}
+          <strong>Release date :</strong> {{ movie.release_date }}
         </p>
         <p class="movie-budget">
-          <strong>Budget :</strong> ${{ movie.budget }} million
+          <strong>Budget :</strong>{{ movie.budget | budget }}
         </p>
         <p class="movie-duration">
           <strong>Duration :</strong>

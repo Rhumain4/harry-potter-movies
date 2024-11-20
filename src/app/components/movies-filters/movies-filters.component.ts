@@ -16,21 +16,18 @@ export class MoviesFiltersComponent {
   @Output()
   public filter = new EventEmitter<FilterMovie>();
 
-  constructor(private formBuilder: FormBuilder) {
-    // Initialisation du formulaire réactif
+  public constructor(private formBuilder: FormBuilder) {
     this.formMoviesFilters = this.formBuilder.group({
       title: null as string | null,
-      releaseYear: null as number | null,
+      release_year: null as number | null,
     });
 
-    // Souscription aux changements du formulaire
     this.formMoviesFilters.valueChanges.subscribe((value) => {
-      this.onFilter(value); // Appel de onFilter dès qu'un champ change
+      this.onFilter(value);
     });
   }
 
   protected onFilter(value: FilterMovie): void {
-    // Émettre les données filtrées dès qu'un champ change
     this.filter.emit(value);
   }
 }

@@ -1,4 +1,4 @@
 export interface FilterMovie {
   title?: string;
-  releaseYear?: Number;
+  release_year?: Number;
 }

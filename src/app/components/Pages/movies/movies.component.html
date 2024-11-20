@@ -1,4 +1,4 @@
 <div class="container">
   <app-movies-filters (filter)="onFilter($event)"></app-movies-filters>
-  <app-movies-list [movies]="movies$ | async"></app-movies-list>
+  <app-movies-list [movies]="filteredMovies$ | async"></app-movies-list>
 </div>

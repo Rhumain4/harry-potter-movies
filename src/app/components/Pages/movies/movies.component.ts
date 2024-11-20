@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FilterMovie } from '../../../models/filter-movie';
 import { Movie } from '../../../models/movie';
 import { MovieService } from '../../../services/movie.service';
@@ -15,33 +15,31 @@ import { MoviesListComponent } from '../../movies-list/movies-list.component';
   imports: [MoviesFiltersComponent, CommonModule, MoviesListComponent],
 })
 export class MoviesComponent {
-  protected movies$: Observable<Movie[]>;
+  private allMovies: Movie[] = [];
+  protected filteredMovies$: Observable<Movie[]> = of([]);
 
-  constructor(private movieService: MovieService) {
-    this.movies$ = this.movieService.getMovies();
+  public constructor(private movieService: MovieService) {
+    // Charge les films une seule fois depuis le service
+    this.movieService.getMovies().subscribe((movies) => {
+      this.allMovies = movies;
+      this.filteredMovies$ = of(this.allMovies);
+    });
   }
 
   protected onFilter(filter: FilterMovie): void {
-    if (!filter.releaseYear && !filter.title) {
-      this.movies$ = this.movieService.getMovies();
-    } else {
-      this.movies$ = this.movieService.getMovies().pipe(
-        map((movies) =>
-          movies.filter((movie) => {
-            const matchesTitle = filter.title
-              ? movie.title.toLowerCase().includes(filter.title.toLowerCase())
-              : true;
-            const matchesReleaseYear = filter.releaseYear
-              ? new Date(movie.release_date)
-                  .getFullYear()
-                  .toString()
-                  .includes(filter.releaseYear.toString())
-              : true;
+    const filteredMovies = this.allMovies.filter((movie) => {
+      const matchesTitle = filter.title
+        ? movie.title.toLowerCase().includes(filter.title.toLowerCase())
+        : true;
+      const matchesReleaseYear = filter.release_year
+        ? new Date(movie.release_date)
+            .getFullYear()
+            .toString()
+            .includes(filter.release_year.toString())
+        : true;
+      return matchesTitle && matchesReleaseYear;
+    });
 
-            return matchesTitle && matchesReleaseYear;
-          })
-        )
-      );
-    }
+    this.filteredMovies$ = of(filteredMovies);
   }
 }
