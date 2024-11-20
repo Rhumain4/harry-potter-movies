@@ -12,5 +12,5 @@ import { DurationFormatPipe } from '../../pipes/duration-format.pipe';
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
-  @Input() movie: DetailsMovie | undefined;
+  @Input() movie: DetailsMovie | null = null;
 }

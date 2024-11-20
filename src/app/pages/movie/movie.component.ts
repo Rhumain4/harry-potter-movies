@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DetailsMovie } from '../../../models/details-movie';
-import { MovieService } from '../../../services/movie.service';
-import { MovieDetailsComponent } from '../../movie-details/movie-details.component';
-import { MovieHeadComponent } from '../../movie-head/movie-head.component';
+import { Observable } from 'rxjs';
+import { MovieDetailsComponent } from '../../components/movie-details/movie-details.component';
+import { MovieHeadComponent } from '../../components/movie-head/movie-head.component';
+import { DetailsMovie } from '../../models/details-movie';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-movie',
@@ -14,7 +15,7 @@ import { MovieHeadComponent } from '../../movie-head/movie-head.component';
   styleUrls: ['./movie.component.css'],
 })
 export class MovieComponent {
-  protected detailsMovie: DetailsMovie | undefined;
+  protected detailsMovie$: Observable<DetailsMovie>;
 
   public constructor(
     private route: ActivatedRoute,
@@ -23,11 +24,7 @@ export class MovieComponent {
   ) {
     const movieId = this.route.snapshot.paramMap.get('movieId');
 
-    this.movieService
-      .getDetailsMovie(movieId!)
-      .subscribe((details: DetailsMovie) => {
-        this.detailsMovie = details;
-      });
+    this.detailsMovie$ = this.movieService.getDetailsMovie(movieId!);
   }
 
   protected onBack() {

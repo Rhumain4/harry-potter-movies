@@ -9,5 +9,5 @@ import { DetailsMovie } from '../../models/details-movie';
   styleUrl: './movie-head.component.css',
 })
 export class MovieHeadComponent {
-  @Input() movie: DetailsMovie | undefined;
+  @Input() movie: DetailsMovie | null = null;
 }
